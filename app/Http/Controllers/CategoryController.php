@@ -46,15 +46,16 @@ class CategoryController extends Controller
     }
    //destroy
 
-   
-   public function destroy($id)
+
+   public function destroy( Request $request)
    {
+    $id = $request->dataid;
     $category = Category::find($id);
-    $product = Product::where('category_id',$id)->count();
+    $product = Product::where('category_id', $id)->count();
     if($product > 0){
         return redirect()->route('category.index')->with('success','Category is used in product. It cannot be deleted directly');
     }
-    Category::find($id)->delete();
+    $category->delete();
     return redirect(route('category.index'))->with('success','Category Deleted Successfully');
     }
 

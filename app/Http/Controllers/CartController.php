@@ -17,6 +17,14 @@ class CartController extends Controller
         ]);
         $data['user_id'] = Auth::id();
 
+
+        // check if the product is already in the cart
+        $cart = Cart::where('user_id', Auth::id())->where('product_id', $data['product_id'])->first();
+        if ($cart) {
+            $cart->qty = $cart->qty + $data['qty'];
+            $cart->save();
+            return back()->with('success', 'Product added to Cart Successfully');
+        }
         Cart::create($data);
         return back()->with('success', 'Product added to Cart Successfully');
     }

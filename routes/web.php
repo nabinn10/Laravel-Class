@@ -69,7 +69,7 @@ Route::middleware(['auth'])->group(function () {
     Route::POST('/category/{id}/update', [CategoryController::class, 'update'])->name('category.update');
 
     //destroy
-    Route::get('/category/{id}/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::delete('/category/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
 
     //product ko lagi gareko
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
