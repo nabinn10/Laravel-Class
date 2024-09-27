@@ -29,12 +29,15 @@ Route::middleware('auth')->group(function() {
     //to delete the item from cart
     Route::get('/cart/delete/{id}', [CartController::class, 'delete'])->name('cart.delete');
 
+    //to checkout
+    Route::get('/checkout/{cartid}', [PagesController::class, 'checkout'])->name('checkout');
+
 });
 
 
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','admin'])->group(function () {
 
     Route::get('/blogs', [BlogsController::class, 'index'])->name('blogs.index');
 
@@ -81,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth', 'admin'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
