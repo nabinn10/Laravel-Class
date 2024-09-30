@@ -16,6 +16,12 @@
         <input value="Pay with eSewa" class="bg-blue-900 text-white px-3 py-2 rounded block w-32 mx-auto hover:bg-black cursor-pointer " type="submit">
     </form>
 
+    <form action="{{route('order.storecod')}}" method="POST">
+        @csrf
+        <input type="hidden" name="cart_id" value="{{$cart->id}}">
+        <input type="submit" value="Cash on Delivery" class="bg-green-600 text-white px-3 py-2 rounded block w-52 mx-auto mt-2 hover:bg-black cursor-pointer">
+    </form>
+
     {{-- Yo ta garnai parxa esewa halna --}}
     @php
         $transaction_uuid = auth()->id(). '-'.time();

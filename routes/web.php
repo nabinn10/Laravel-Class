@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function() {
     // to store the order
     Route::get('/order/store/{cartid}', [OrderController::class, 'store'])->name('order.store');
 
+    Route::post('/order/store/', [OrderController::class, 'storecod'])->name('order.storecod');
+
 });
 
 
@@ -88,6 +90,9 @@ Route::middleware(['auth','admin'])->group(function () {
 
     // order
     Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+
+    // Route
+    Route::get('/order/{id}/status/{status}', [OrderController::class, 'status'])->name('order.status');
 
 
 
