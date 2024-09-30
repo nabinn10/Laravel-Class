@@ -30,7 +30,7 @@ class PagesController extends Controller
     }
 
     //checkout function
-    public function checkout($cartid)
+     public function checkout($cartid)
     {
         // find cart id
         $cart = Cart::find($cartid);

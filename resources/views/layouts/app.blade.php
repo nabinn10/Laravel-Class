@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('dashboard') }}"
+                    <a href="{{ route('order.index')}}"
                         class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b">
                         <i class='bx bx-cart'></i>
                         <span class="ml-2">Orders</span>
