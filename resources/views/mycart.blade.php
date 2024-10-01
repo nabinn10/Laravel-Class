@@ -31,7 +31,15 @@
                         @endif
 
                     </td>
-                    <td class="border border-gray-100 p-2">Rs. {{ $cart->total }}</td>
+                    <td class="border border-gray-100 p-2">Rs.
+                        @if ($cart->product->discounted_price == '')
+                            {{ $cart->product->price * $cart->qty }}
+                        @else
+                            {{ $cart->product->discounted_price }}
+                            <span class="line-through text-xs text-red-600 block">Rs. {{ $cart->product->discounted_price * $cart->qty   }}</span>
+                        @endif
+
+                    </td>
                     <td class="border border-gray-100 p-2 text-center">
                         <a href="{{route('checkout',$cart->id)}}" class="bg-red-500 text-white  px-2 py-1  rounded-lg">Checkout</a>
                         <a href="{{route('cart.delete',$cart->id)}}" class="bg-blue-900 text-white  px-2 py-1  rounded-lg">Delete</a>

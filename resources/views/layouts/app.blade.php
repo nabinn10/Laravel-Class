@@ -19,66 +19,69 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased dark:bg-slate-800">
     @include('layouts.alert')
     <div class="flex">
         <nav class="w-56 h-screen bg-gray-100 shadow-lg">
             <img src="{{ asset('images/logo1.png') }}" alt=""
-                style="blend-mode:screen; background-color: rgba(75, 85, 99, 0.5); "
-                class="w-40 mx-auto mt-5 rounded-md">
+                style="blend-mode:screen; background-color: rgba(75, 85, 99, 0.5);" class="w-40 mx-auto mt-5 rounded-md">
             <ul class="mt-5">
                 <li>
                     <a href="{{ route('dashboard') }}"
-                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b">
+                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b
+                        {{ Route::is('dashboard') ? 'bg-blue-900 text-white' : '' }}">
                         <i class='bx bx-home-alt'></i>
                         <span class="ml-2">Dashboard</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('blogs.index') }}"
-                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b">
+                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b
+                        {{ Route::is('blogs.index') ? 'bg-blue-900 text-white' : '' }}">
                         <i class='bx bxs-book'></i>
                         <span class="ml-2">Banners</span>
                     </a>
                 </li>
-
-
                 <li>
                     <a href="{{ route('category.index') }}"
-                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b">
+                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b
+                        {{ Route::is('category.index') ? 'bg-blue-900 text-white' : '' }}">
                         <i class='bx bx-category'></i>
                         <span class="ml-2">Category</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('product.index') }}"
-                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b">
+                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b
+                        {{ Route::is('product.index') ? 'bg-blue-900 text-white' : '' }}">
                         <i class='bx bx-box'></i>
                         <span class="ml-2">Products</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('order.index')}}"
-                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b">
+                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b
+                        {{ Route::is('order.index') ? 'bg-blue-900 text-white' : '' }}">
                         <i class='bx bx-cart'></i>
                         <span class="ml-2">Orders</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('dashboard') }}"
-                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b">
+                    <a href="{{ route('logout') }}"
+                        class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b
+                        {{ Route::is('logout') ? 'bg-blue-900 text-white' : '' }}">
                         <i class='bx bx-user'></i>
                         <span class="ml-2">Users</span>
                     </a>
                 </li>
-
                 <li>
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button type="submit"
                             class="flex items-center text-gray-600 hover:bg-blue-900 hover:text-white py-2 px-4 rounded-md border-b w-full text-left">
-                            <i class='bx bx-log-out'></i> <span class="ml-2">Logout</span></button>
-
+                            <i class='bx bx-log-out'></i>
+                            <span class="ml-2">Logout</span>
+                        </button>
                     </form>
                 </li>
             </ul>

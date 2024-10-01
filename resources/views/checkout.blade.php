@@ -13,13 +13,21 @@
         <input type="hidden" id="signed_field_names" name="signed_field_names"
             value="total_amount,transaction_uuid,product_code" required>
         <input type="hidden" id="signature" name="signature" required>
-        <input value="Pay with eSewa" class="bg-blue-900 text-white px-3 py-2 rounded block w-32 mx-auto hover:bg-black cursor-pointer " type="submit">
+        <button class="bg-blue-900 text-white px-3 py-2 rounded block w-48 mx-auto hover:bg-black cursor-pointer flex items-center justify-center space-x-2">
+            <i class="fas fa-wallet"></i>
+            <span>Pay with eSewa</span>
+        </button>
+
     </form>
 
     <form action="{{route('order.storecod')}}" method="POST">
         @csrf
         <input type="hidden" name="cart_id" value="{{$cart->id}}">
-        <input type="submit" value="Cash on Delivery" class="bg-green-600 text-white px-3 py-2 rounded block w-52 mx-auto mt-2 hover:bg-black cursor-pointer">
+        <button class="bg-green-600 text-white px-3 py-2 rounded block w-64 mx-auto mt-2 hover:bg-black cursor-pointer flex items-center justify-center space-x-2">
+            <i class="fas fa-money-bill-wave"></i>
+            <span>Cash on Delivery</span>
+          </button>
+
     </form>
 
     {{-- Yo ta garnai parxa esewa halna --}}

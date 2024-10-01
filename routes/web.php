@@ -20,6 +20,9 @@ Route::get('/categoryproduct/{id}', [PagesController::class, 'categoryproduct'])
 
 Route::resource('blogs', BlogsController::class);
 
+// route for search
+Route::get('/search', [PagesController::class, 'search'])->name('search');
+
 
 
 

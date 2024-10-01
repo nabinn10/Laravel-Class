@@ -27,9 +27,9 @@
 
     <nav class="shadow bg-white px-16 py-4 flex justify-between items-center mb-10 sticky top-0 z-40">
         <img src="{{ asset('images/logo1.png') }}" alt="Logo" class="h-16">
-        <form action="">
+        <form action="{{route('search')}}" method="GET">
             <input type="search" class="border border-gray-300 rounded-lg px-3 py-2" placeholder="Search"
-                name="search">
+                name="search" value="{{request()->query('search')}}">
             <button type="submit" class="bg-blue-900 text-white rounded-lg px-4 py-2">Search</button>
         </form>
         <div class="flex gap-4 items-center">

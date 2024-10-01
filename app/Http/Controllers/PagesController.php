@@ -30,23 +30,28 @@ class PagesController extends Controller
     }
 
     //checkout function
-     public function checkout($cartid)
+    public function checkout($cartid)
     {
         // find cart id
         $cart = Cart::find($cartid);
-    //   compact total price
-        if($cart->product->discounted_price == '')
-        {
+        //   compact total price
+        if ($cart->product->discounted_price == '') {
             $cart_total = $cart->product->price * $cart->qty;
-        }
-        else
-        {
+        } else {
             $cart_total = $cart->product->discounted_price * $cart->qty;
         }
 
-            $cart->tax = $cart_total * 0.13;
+        $cart->tax = $cart_total * 0.13;
 
         // compact cart
         return view('checkout', compact('cart', 'cart_total'));
+    }
+
+    // function for seach
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $products = Product::where('name', 'like', '%' . $search . '%')->orWhere('description','like','%' .$search.'%')->get();
+        return view('search', compact('products'));
     }
 }

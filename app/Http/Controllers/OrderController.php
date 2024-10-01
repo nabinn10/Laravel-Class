@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -72,6 +73,15 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = $status;
         $order->save();
+        // send mail to user
+        $data = [
+            'name' => $order->name,
+            'status' => $status,
+        ];
+        Mail::send('mail.order', $data, function ($message) use ($order) {
+        $message->to($order->user->email, $order->name)->subject('Order Status');
+        });
+
         return back()->with('success','Order is now '.$status);
     }
 }
