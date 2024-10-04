@@ -25,7 +25,7 @@ class PagesController extends Controller
     public function categoryproduct($id)
     {
         $category = Category::find($id);
-        $products = Product::where('status', 'Show')->where('category_id', $id)->get();
+        $products = Product::where('status', 'Show')->where('category_id', $id)->paginate(4);
         return view('categoryproduct', compact('products', 'category'));
     }
 
